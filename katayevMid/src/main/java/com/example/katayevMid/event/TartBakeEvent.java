@@ -1,7 +1,7 @@
 package com.example.katayevMid.event;
 
-import com.example.katayevMid.goods.Tart;
-import com.example.katayevMid.goods.TartShowcase;
+import com.example.katayevMid.entity.Tart;
+import com.example.katayevMid.entity.TartShowcase;
 import org.springframework.context.ApplicationEvent;
 
 import java.util.List;

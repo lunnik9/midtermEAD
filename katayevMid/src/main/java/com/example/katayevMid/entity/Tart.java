@@ -1,21 +1,32 @@
-package com.example.katayevMid.goods;
+package com.example.katayevMid.entity;
 
 import com.example.katayevMid.db.MyConnection;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
+@Entity
+@Getter
+@Setter
 public class Tart implements Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+
     private String name;
     private int timeToBake;
     private int price;
     private boolean isBurned;
 
-    private boolean burn(int price){
+    private boolean burn(int price) {
 
-        while (price >500){
-            price-=500;
+        while (price > 500) {
+            price -= 500;
             int rand=(int)Math.random()*1000;
             if (rand>800){
                 this.isBurned=true;
@@ -59,4 +70,8 @@ public class Tart implements Product {
     public Product GetProduct() {
         return this;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cook_id", insertable = false)
+    private Cook cook;
 }

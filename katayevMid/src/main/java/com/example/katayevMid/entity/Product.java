@@ -1,4 +1,4 @@
-package com.example.katayevMid.goods;
+package com.example.katayevMid.entity;
 
 import java.sql.SQLException;
 

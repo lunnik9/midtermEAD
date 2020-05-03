@@ -1,11 +1,22 @@
-package com.example.katayevMid.goods;
+package com.example.katayevMid.entity;
 
 import com.example.katayevMid.db.MyConnection;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.persistence.*;
 
+@Entity
+@Getter
+@Setter
 public class Cake implements Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+
+
     private String name;
     private int timeToBake;
     private int price;
@@ -36,4 +47,8 @@ public class Cake implements Product {
     public Product GetProduct() {
         return this;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cook_id", insertable = false)
+    private Cook cook;
 }

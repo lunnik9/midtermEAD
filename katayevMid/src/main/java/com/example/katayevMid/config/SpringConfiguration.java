@@ -1,7 +1,7 @@
 package com.example.katayevMid.config;
 
-import com.example.katayevMid.goods.Cake;
-import com.example.katayevMid.goods.Tart;
+import com.example.katayevMid.entity.Cake;
+import com.example.katayevMid.entity.Tart;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
