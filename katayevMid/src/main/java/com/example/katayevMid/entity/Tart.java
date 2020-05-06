@@ -1,6 +1,8 @@
 package com.example.katayevMid.entity;
 
 import com.example.katayevMid.db.MyConnection;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +25,7 @@ public class Tart implements Product {
     private int price;
     private boolean isBurned;
 
+    @ApiOperation(value = "emulation of manufacturing defects in process of baking")
     private boolean burn(int price) {
 
         while (price > 500) {
@@ -37,17 +40,8 @@ public class Tart implements Product {
         return false;
     }
 
-    private Tart(String name, int timeToBake, int price) {
-        this.name = name;
-        this.timeToBake = timeToBake;
-        this.price = price;
-    }
-
-    public boolean isBurned(){
-        return isBurned;
-    }
-
     @Override
+
     public Product bake(String name) throws InterruptedException, SQLException {
         MyConnection con = new MyConnection("localhost:5432");
         ResultSet res = con.GetSmth("SELECT price,time_to_bake FROM cakes where name=" + name);
@@ -56,7 +50,7 @@ public class Tart implements Product {
         int price = res.getInt("price");
 
         Thread.sleep(timeToBake);
-        if (burn(price)){
+        if (burn(price)) {
             System.out.println("tart was burned");
             return null;
         }
@@ -64,6 +58,16 @@ public class Tart implements Product {
         System.out.println("tart was prepared successfully");
 
         return new Tart(name, ttb, price);
+    }
+
+    private Tart(String name, int timeToBake, int price) {
+        this.name = name;
+        this.timeToBake = timeToBake;
+        this.price = price;
+    }
+
+    public boolean isBurned() {
+        return isBurned;
     }
 
     @Override

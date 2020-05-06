@@ -1,5 +1,6 @@
 package com.example.katayevMid.entity;
 
+import io.swagger.annotations.Api;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Api(value = "the only role in the system")
 public class Cook implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

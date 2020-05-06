@@ -1,6 +1,7 @@
 package com.example.katayevMid.entity;
 
 import com.example.katayevMid.db.MyConnection;
+import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.Setter;
 
